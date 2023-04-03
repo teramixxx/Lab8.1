@@ -1,0 +1,47 @@
+﻿using System;
+
+namespace DoFactory.GangOfFour.Adapter.Structural
+{
+
+    class MainApp
+    {
+
+        static void Main()
+        {
+
+            Target target = new Adapter();
+            target.Request();
+
+            Console.ReadKey();
+        }
+    }
+
+
+    class Target
+    {
+        public virtual void Request()
+        {
+            Console.WriteLine("Визваний помічник");
+        }
+    }
+
+    class Adapter : Target
+    {
+        private Adaptee _adaptee = new Adaptee();
+
+        public override void Request()
+        {
+
+            _adaptee.SpecificRequest();
+        }
+    }
+
+
+    class Adaptee
+    {
+        public void SpecificRequest()
+        {
+            Console.WriteLine("Помiчник прийшов");
+        }
+    }
+}
